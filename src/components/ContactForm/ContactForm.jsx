@@ -1,12 +1,13 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-// import { nanoid } from 'nanoid';
+
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../redux/contactsSlice';
-import { addContact } from '../../redux/contactsOps';
+
 import styles from './ContactForm.module.css';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { selectContacts } from '../../redux/contacts/slice';
+import { addContact } from '../../redux/contacts/operations';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
