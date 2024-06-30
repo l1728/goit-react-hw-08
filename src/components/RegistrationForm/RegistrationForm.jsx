@@ -1,8 +1,9 @@
-import { ErrorMessage, Field, Formik } from 'formik';
+import { ErrorMessage, Field, Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { register } from '../../redux/auth/operations';
-import { Form } from 'react-router-dom';
+
+import style from './RegistrationForm.module.css';
 
 const validationSchema = Yup.object({
   name: Yup.string().required('Required'),
@@ -15,9 +16,17 @@ const validationSchema = Yup.object({
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { setSubmitting }) => {
-    dispatch(register(values));
-    setSubmitting(false);
+  const handleSubmit = (values, { resetForm }) => {
+    console.log('Submitting values:', values);
+    dispatch(register(values))
+      .unwrap()
+      .then(() => {
+        console.log('registration success');
+      })
+      .catch(error => {
+        console.error('registration error', error);
+      });
+    resetForm();
   };
 
   return (
@@ -27,20 +36,26 @@ const RegistrationForm = () => {
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form>
+        <Form className={style.form} autoComplete="off">
           <div>
-            <label htmlFor="name">Name</label>
-            <Field type="text" name="name" />
+            <label className={style.label} htmlFor="name">
+              Name
+            </label>
+            <Field type="text" name="name" id="name" />
             <ErrorMessage name="name" component="div" />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
-            <Field type="email" name="email" />
+            <label className={style.label} htmlFor="email">
+              Email
+            </label>
+            <Field type="email" name="email" id="email" />
             <ErrorMessage name="email" component="div" />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <Field type="password" name="password" />
+            <label className={style.label} htmlFor="password">
+              Password
+            </label>
+            <Field type="password" name="password" id="password" />
             <ErrorMessage name="password" component="div" />
           </div>
           <button type="submit" disabled={isSubmitting}>
