@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import style from './Navigation.module.css';
 
 const Navigation = () => {
-  const { isLoggedIn } = useSelector(selectIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <nav>

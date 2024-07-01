@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Formik, Form } from 'formik';
+import { Field, Formik, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { register } from '../../redux/auth/operations';
@@ -21,45 +21,73 @@ const RegistrationForm = () => {
     dispatch(register(values))
       .unwrap()
       .then(() => {
-        console.log('registration success');
+        console.log('Registration successful! Welcome!');
       })
       .catch(error => {
-        console.error('registration error', error);
+        console.error('Registration error. Please try again.', error);
       });
     resetForm();
   };
 
   return (
-    <Formik
-      initialValues={{ name: '', email: '', password: '' }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={style.form} autoComplete="off">
-        <div>
-          <label className={style.label} htmlFor="name">
-            Name
-          </label>
-          <Field type="text" name="name" id="name" />
-          <ErrorMessage name="name" component="div" />
-        </div>
-        <div>
-          <label className={style.label} htmlFor="email">
-            Email
-          </label>
-          <Field type="email" name="email" id="email" />
-          <ErrorMessage name="email" component="div" />
-        </div>
-        <div>
-          <label className={style.label} htmlFor="password">
-            Password
-          </label>
-          <Field type="password" name="password" id="password" />
-          <ErrorMessage name="password" component="div" />
-        </div>
-        <button type="submit">Register</button>
-      </Form>
-    </Formik>
+    <div className={style.contRegLogForm}>
+      <h2 className={style.titleRegLogForm}>Register,please!</h2>
+      <Formik
+        initialValues={{ name: '', email: '', password: '' }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={style.regLogForm} autoComplete="off">
+          <div className={style.inputGroup}>
+            <label className={style.regLoglabel} htmlFor="name">
+              Name
+            </label>
+            <Field
+              className={style.regLogInput}
+              type="text"
+              name="name"
+              id="name"
+            />
+            <ErrorMessage className={style.error} name="name" component="div" />
+          </div>
+          <div className={style.inputGroup}>
+            <label className={style.regLoglabel} htmlFor="email">
+              Email
+            </label>
+            <Field
+              className={style.regLogInput}
+              type="email"
+              name="email"
+              id="email"
+            />
+            <ErrorMessage
+              className={style.error}
+              name="email"
+              component="div"
+            />
+          </div>
+          <div className={style.inputGroup}>
+            <label className={style.regLoglabel} htmlFor="password">
+              Password
+            </label>
+            <Field
+              className={style.regLogInput}
+              type="password"
+              name="password"
+              id="password"
+            />
+            <ErrorMessage
+              className={style.error}
+              name="password"
+              component="div"
+            />
+          </div>
+          <button className={style.regButton} type="submit">
+            Register
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

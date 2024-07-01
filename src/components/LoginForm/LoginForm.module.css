@@ -1,0 +1,52 @@
+.contRegLogForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+}
+.titleRegLogForm {
+  color: #3fc03f;
+}
+.regLogForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.regLoglabel {
+  color: #3fc03f;
+
+  padding-bottom: 6px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 300px;
+}
+.regLogInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.regButton {
+  background-color: #3fc03f;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.regButton:hover {
+  background-color: #34a534;
+}
+.error {
+  color: red;
+  font-size: 0.875em;
+}
