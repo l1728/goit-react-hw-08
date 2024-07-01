@@ -1,4 +1,4 @@
-import DocumentTitle from '../../components/DocumentTitle';
+// import DocumentTitle from '../../components/DocumentTitle';
 
 const styles = {
   container: {
@@ -17,7 +17,7 @@ const styles = {
 const HomePage = () => {
   return (
     <>
-      <DocumentTitle>Home</DocumentTitle>
+      {/* <h1>Home</h1> */}
 
       <div style={styles.container}>
         <h1 style={styles.title}>

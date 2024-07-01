@@ -35,34 +35,30 @@ const RegistrationForm = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting }) => (
-        <Form className={style.form} autoComplete="off">
-          <div>
-            <label className={style.label} htmlFor="name">
-              Name
-            </label>
-            <Field type="text" name="name" id="name" />
-            <ErrorMessage name="name" component="div" />
-          </div>
-          <div>
-            <label className={style.label} htmlFor="email">
-              Email
-            </label>
-            <Field type="email" name="email" id="email" />
-            <ErrorMessage name="email" component="div" />
-          </div>
-          <div>
-            <label className={style.label} htmlFor="password">
-              Password
-            </label>
-            <Field type="password" name="password" id="password" />
-            <ErrorMessage name="password" component="div" />
-          </div>
-          <button type="submit" disabled={isSubmitting}>
-            Register
-          </button>
-        </Form>
-      )}
+      <Form className={style.form} autoComplete="off">
+        <div>
+          <label className={style.label} htmlFor="name">
+            Name
+          </label>
+          <Field type="text" name="name" id="name" />
+          <ErrorMessage name="name" component="div" />
+        </div>
+        <div>
+          <label className={style.label} htmlFor="email">
+            Email
+          </label>
+          <Field type="email" name="email" id="email" />
+          <ErrorMessage name="email" component="div" />
+        </div>
+        <div>
+          <label className={style.label} htmlFor="password">
+            Password
+          </label>
+          <Field type="password" name="password" id="password" />
+          <ErrorMessage name="password" component="div" />
+        </div>
+        <button type="submit">Register</button>
+      </Form>
     </Formik>
   );
 };

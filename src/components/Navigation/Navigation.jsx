@@ -1,26 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logOut } from '../../redux/auth/operations';
+import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { useSelector } from 'react-redux';
+import style from './Navigation.module.css';
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
-
-  const handleLogout = () => {
-    dispatch(logOut());
-  };
+  const { isLoggedIn } = useSelector(selectIsLoggedIn);
 
   return (
     <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/contacts">Contacts</NavLink>
-      {isLoggedIn ? (
-        <button onClick={handleLogout}>Logout</button>
-      ) : (
-        <>
-          <NavLink to="/login">Login</NavLink>
-          <NavLink to="/register">Register</NavLink>
-        </>
+      <NavLink className={style.link} to="/">
+        Home
+      </NavLink>
+      {isLoggedIn && (
+        <NavLink className={style.link} to="/contacts">
+          Your contacts
+        </NavLink>
       )}
     </nav>
   );

@@ -1,4 +1,3 @@
-import DocumentTitle from '../../components/DocumentTitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { selectLoading } from '../../redux/contacts/selectors.js';
@@ -17,7 +16,7 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <DocumentTitle>Your contacts</DocumentTitle>
+      <h1>Your contacts</h1>
       <ContactForm />
       <div>{isLoading && 'Request in progress...'}</div>
       <SearchBox />
