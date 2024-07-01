@@ -6,8 +6,8 @@ import AuthNav from '../AuthNav/AuthNav';
 import style from './/AppBar.module.css';
 
 const AppBar = () => {
-  const { isLoggedIn } = useSelector(selectIsLoggedIn);
-
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  console.log(isLoggedIn);
   return (
     <header className={style.header}>
       <Navigation />
